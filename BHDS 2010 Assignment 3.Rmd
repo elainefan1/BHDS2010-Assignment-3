@@ -1,0 +1,25 @@
+---
+title: "BHDS Assignment 3"
+author: "Elaine Fan"
+date: "2025-10-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+df <- read.csv("TextMessages.csv")
+```
+
+```{r}
+library(tidyverse)
+df_long <- df %>% pivot_longer(cols = c(Baseline, Six_months), names_to = "Time", values_to = "Text_Count")
+
+```
+
+```{r}
+library(ggplot2)
+ggplot(df_long, aes(x = Group, y = Text_Count, fill = Group)) + geom_boxplot() + facet_wrap(~ Time) + labs(title = "Text Messages by Group and Time", x = "Group", y = "Number of Text Messages") + theme_minimal() + theme(plot.title = element_text(hjust = 0.5, face = "bold"))
+```
