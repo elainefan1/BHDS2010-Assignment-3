@@ -20,6 +20,10 @@ summary_stats <- df_combine %>%
     sd = sd(Messages),
     n = n(),
     var = var(Messages),
+    min = min(Messages),
+    max = max(Messages),
+    IQR = IQR(Messages),
+    median = median(Messages),
     .groups = "drop"
   )
 
